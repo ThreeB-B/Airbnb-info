@@ -21,5 +21,8 @@ module.exports = {
   ],
   rules: {
     "no-console": 0,
+    "import/extensions": "off",
+    "react/destructuring-assignment": "off",
+    "eslintjsx-a11y/no-static-element-interactions" : "off",
   },
 };

@@ -1,2 +1,5 @@
 node_modules
 database/roomData.csv
+database/Postgres/queries.js
+database/Arango/config.js
+server/newrelic.js

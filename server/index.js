@@ -1,26 +1,22 @@
+const newrelic = require('newrelic');
 const express = require('express');
 
 const app = express();
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const db = require('../database/index1.js');
+// const bodyParser = require('body-parser');
+// const cors = require('cors');
+
+const dbpostgres = require('../database/Postgres/index3.js');
 
 const port = 3002;
 
-app.use(cors());
+// app.use(cors());
 app.use(express.static(`${__dirname}/../client/dist`));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
 app.get('/listings/:id', (req, res) => {
-  db.findOne({ id: req.params.id }).exec((err, docs) => {
-    if (err) {
-      res.status(500).send();
-    } else {
-      res.status(200).send(docs);
-    }
-  });
+  dbpostgres.getRoomById(req, res);
 });
 
 
